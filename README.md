@@ -16,10 +16,10 @@ This Turborepo includes the following packages/apps:
 
 ### Apps and Packages
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `mobile`: an [Expo](https://expo.dev/) React Native app
+- `web`: a [Next.js](https://nextjs.org/) app
+- `@repo/ui`: a stub React component library shared by both `mobile` and `web` applications
+- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next`, `eslint-config-expo`, and `eslint-config-prettier`)
 - `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
@@ -52,12 +52,12 @@ You can build a specific package by using a [filter](https://turborepo.com/docs/
 
 ```
 # With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build --filter=docs
+turbo build --filter=web
 
 # Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build --filter=docs
-yarn exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
+npx turbo build --filter=web
+yarn exec turbo build --filter=web
+pnpm exec turbo build --filter=web
 ```
 
 ### Develop
@@ -87,6 +87,25 @@ npx turbo dev --filter=web
 yarn exec turbo dev --filter=web
 pnpm exec turbo dev --filter=web
 ```
+
+### Developing the Mobile App
+
+The mobile app uses Expo. To develop it specifically:
+
+```
+# Start the Expo development server
+turbo dev --filter=mobile
+
+# Or run directly in the mobile app directory
+cd apps/mobile
+npm run dev
+```
+
+This will start the Expo development server. You can then:
+
+- Press `i` to open iOS simulator
+- Press `a` to open Android emulator
+- Scan the QR code with Expo Go app on your device
 
 ### Remote Caching
 
